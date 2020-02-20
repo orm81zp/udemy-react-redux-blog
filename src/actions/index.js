@@ -4,11 +4,13 @@ export const ACTIONS = {
   FETCH_POSTS: 'FETCH_POSTS'
 };
 
-export const fetchPosts = async () => {
-  const response = await jsonPlaceholder.get('/posts');
+export const fetchPosts = () => {
+  return async (dispatch) => {
+    const response = await jsonPlaceholder.get('/posts');
 
-  return {
-    type: ACTIONS.FETCH_POSTS,
-    payload: response
+    dispatch({
+      type: ACTIONS.FETCH_POSTS,
+      payload: response
+    })
   }
 };
